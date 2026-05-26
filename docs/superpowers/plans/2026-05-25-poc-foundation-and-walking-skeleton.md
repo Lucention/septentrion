@@ -102,6 +102,7 @@ septentrion = "septentrion.cli:app"
 dev = [
     "pytest>=8.3",
     "pytest-cov>=6.0",
+    "pytest-xdist>=3.6",
     "ruff>=0.9",
     "ty>=0.0.1a1",
     "pre-commit>=4.0",
@@ -155,8 +156,8 @@ known-first-party = ["septentrion"]
 [tool.ruff.format]
 docstring-code-format = true
 
-[tool.ty.src]
-root = "./src"
+[tool.ty.environment]
+root = ["./src"]
 
 [tool.ty.rules]
 unresolved-import = "ignore"
@@ -165,7 +166,7 @@ unresolved-import = "ignore"
 minversion = "8.0"
 testpaths = ["tests"]
 pythonpath = ["src"]
-addopts = ["-ra", "--strict-markers", "--strict-config", "-m", "not slow and not gpu"]
+addopts = ["-ra", "--strict-markers", "--strict-config", "-n", "auto", "-m", "not slow and not gpu"]
 markers = [
     "slow: long-running tests",
     "gpu: requires a CUDA device",
@@ -175,6 +176,7 @@ markers = [
 [tool.coverage.run]
 source = ["septentrion"]
 branch = true
+parallel = true
 
 [tool.coverage.report]
 show_missing = true
@@ -322,7 +324,7 @@ jobs:
       - name: Type check (ty)
         run: uv run ty check
       - name: Tests (fast, CPU-only)
-        run: uv run pytest -n0 --cov --cov-report=xml
+        run: uv run pytest --cov --cov-report=xml   # -n auto comes from addopts
 ```
 
 - [ ] **Step 3: Verify ruff and ty run clean on the current tree**
