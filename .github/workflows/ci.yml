@@ -30,4 +30,4 @@ jobs:
       - name: Type check (ty)
         run: uv run ty check
       - name: Tests (fast, CPU-only)
-        run: uv run pytest -n0 --cov --cov-report=xml
+        run: uv run pytest --cov --cov-report=xml
