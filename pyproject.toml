@@ -82,7 +82,7 @@ select = ["E", "W", "F", "I", "UP", "B", "C4", "SIM", "RET", "PTH", "NPY", "PD",
 ignore = ["E501", "B008", "SIM108", "RET504"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**/*.py" = ["B011", "PD901"]
+"tests/**/*.py" = ["B011", "PD901", "TC003"]
 "**/*.ipynb" = ["E402", "F401", "F811", "B018"]
 "__init__.py" = ["F401"]
 
