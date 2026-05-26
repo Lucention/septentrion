@@ -38,6 +38,7 @@ septentrion = "septentrion.cli:app"
 dev = [
     "pytest>=8.3",
     "pytest-cov>=6.0",
+    "pytest-xdist>=3.6",
     "ruff>=0.9",
     "ty>=0.0.1a1",
     "pre-commit>=4.0",
@@ -101,7 +102,7 @@ unresolved-import = "ignore"
 minversion = "8.0"
 testpaths = ["tests"]
 pythonpath = ["src"]
-addopts = ["-ra", "--strict-markers", "--strict-config", "-m", "not slow and not gpu"]
+addopts = ["-ra", "--strict-markers", "--strict-config", "-n", "auto", "-m", "not slow and not gpu"]
 markers = [
     "slow: long-running tests",
     "gpu: requires a CUDA device",
@@ -111,6 +112,7 @@ markers = [
 [tool.coverage.run]
 source = ["septentrion"]
 branch = true
+parallel = true
 
 [tool.coverage.report]
 show_missing = true
