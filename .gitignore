@@ -20,3 +20,6 @@ outputs/
 
 # Notebooks: keep paired .py, ignore the .ipynb
 *.ipynb
+
+# Vendored external code (cloned via scripts/setup_xview3.sh)
+third_party/
