@@ -1,0 +1,22 @@
+# Environments
+.venv/
+__pycache__/
+*.py[cod]
+
+# Secrets / local env files
+.env
+.env.*
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.ty_cache/
+.coverage
+coverage.xml
+
+# Project data & outputs (never commit)
+data/
+outputs/
+
+# Notebooks: keep paired .py, ignore the .ipynb
+*.ipynb
