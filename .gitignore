@@ -3,6 +3,10 @@
 __pycache__/
 *.py[cod]
 
+# Secrets / local env files
+.env
+.env.*
+
 # Tooling caches
 .pytest_cache/
 .ruff_cache/
